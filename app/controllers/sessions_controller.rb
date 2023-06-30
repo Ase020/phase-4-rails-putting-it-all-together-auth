@@ -20,8 +20,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    user = User.find(session[:user_id])
-    if user.valid?
+    user = User.find_by(id: session[:user_id])
+    if user
     session[:user_id] = nil
     head :no_content
     else
